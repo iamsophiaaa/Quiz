@@ -5,8 +5,8 @@ app_name = 'catalogue'
 
 
 urlpatterns= [
+   path('', index, name='index'),
    
-    path('', index, name = 'index'),
     
 ]
     
