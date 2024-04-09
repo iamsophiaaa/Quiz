@@ -1,13 +1,10 @@
 from django.shortcuts import render, redirect
-from .models import Question, Option
+from .models import Category
 
 def index(request):
     if request.method == 'GET':
-        questions = Question.objects.all()
-        if questions.exists():
-            
-            question = questions[0]
-            options = Option.objects.filter(question_id=question)
+        categories = Category.objects.all()
         
-            return render(request, 'index.html', {'question': question, 'options': options})
+        
+        return render(request, 'index.html', {'categories': categories})
 

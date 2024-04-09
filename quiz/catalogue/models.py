@@ -1,18 +1,23 @@
 from django.db import models
 
 
-class Question(models.Model):
-    question_id = models.AutoField(primary_key=True)
-    question  = models.CharField(max_length = 255)
-    answer = models.CharField(max_length = 255, default="")
-    
+class Category(models.Model):
+    category = models.CharField(max_length = 100)
 
     def __str__(self):
-        return self.question
+        return self.category
+    
+class Question(models.Model):
+    category = models.ForeignKey(Category, on_delete=models.CASCADE)
+    question_text = models.TextField()
+
+    def __str__(self):
+        return self.question_text[:20]
     
 class Option(models.Model):
-    question_id= models.ForeignKey(Question, on_delete=models.CASCADE, related_name = 'options')
-    option = models.CharField(max_length=255)
+    question = models.ForeignKey(Question, on_delete=models.CASCADE)
+    option = models.CharField(max_length = 255)
+    is_correct = models.BooleanField(default=True)
 
     def __str__(self):
         return self.option
