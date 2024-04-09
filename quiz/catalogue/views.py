@@ -9,5 +9,5 @@ def index(request):
             question = questions[0]
             options = Option.objects.filter(question_id=question)
         
-            return render(request, 'player/index.html', {'question': question, 'options': options})
+            return render(request, 'index.html', {'question': question, 'options': options})
 
