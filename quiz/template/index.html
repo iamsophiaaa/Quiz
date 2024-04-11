@@ -6,10 +6,8 @@
     <h1 class="display-5 fw-bold my-2">Welcome to Quiz-BCA</h1>
     <p class="fs-3">Learn, Play, and Excel: Elevate Your Education with Engaging Quizzes!</p>
     <div class="d-inline-flex gap-2 mb-5">
-        <a href="./all-quiz.html" class="d-inline-flex align-items-center btn btn-primary btn-lg px-4">
-            Take a quiz
-        </a>
-        <a href="./register.html" class="btn btn-outline-secondary btn-lg px-4" type="button">
+        
+        <a href="{% url 'account:register' %}" class="btn btn-outline-secondary btn-lg px-4" type="button">
             Sign Up
         </a>
     </div>
