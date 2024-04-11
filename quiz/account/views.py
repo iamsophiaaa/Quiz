@@ -1,6 +1,6 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
-from django.contrib.auth import authenticate,logout
+from django.contrib.auth import authenticate,logout, login
 # Create your views here.
 def register(request):
     if request.method =='GET':
@@ -20,7 +20,7 @@ def register(request):
     
     
 
-def login(request):
+def login_user(request):
     if request.method=='GET':
         
         return render(request ,"login.html" )
@@ -30,6 +30,7 @@ def login(request):
         password = request.POST.get('password')
         user = authenticate(request, username=uname, password=password)
         if user is not None:
+            login(request, user)
             return redirect('catalogue:dashboard')
         
         else:
@@ -37,6 +38,6 @@ def login(request):
             print(error)
             return render(request ,"login.html", {'error':error} )
     
-def logout(request):
+def logout_user(request):
     logout(request)
     return redirect('catalogue:dashboard')
