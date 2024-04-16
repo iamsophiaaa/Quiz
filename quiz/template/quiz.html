@@ -5,22 +5,23 @@
     <div class="container">
         
 
-        {% for question in questions %}
+        {% for question, options in question_options.items %}
         <div class="questions my-4">
-            <div class="card mb-2">
+            <div class="card mb-2 question">
                 <div class="card-header fw-bold">
-                    
+                    Question {{forloop.counter}}
                 </div>
                 <div class="card-body">
                     <p class="card-text">{{question.question_text}}</p>
                     {%for option in options %}
                     <div class="form-check">
                         <label class="form-check-label" for="flexRadioDefault1">
-                            <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
+                            <input class="form-check-input" value="{{option.option}}" type="radio" name="flexRadioDefault" id="flexRadioDefault1">
                             
-                            {{option.option}}
+                            {{option.option_text}}
                             
                         </label>
+                        
                     </div>
                     {%endfor%}
                     
@@ -29,11 +30,15 @@
             
         </div>
         {% endfor %}
-        <button type="submit" class="btn btn-primary">Submit the quiz</button>
+        <form action="" method="post" id="quiz_form">
+            {% csrf_token %}
+            <input type="hidden" name="score" id="user_score" value="0">
+            <button type="submit" class="btn btn-primary" id="submit_button">Submit the quiz</button>
 
+
+        </form>
+        
     </div>
-    
-
 
 
     

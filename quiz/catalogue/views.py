@@ -23,9 +23,12 @@ def quiz(request, pk):
     if request.method == 'GET':
         category = get_object_or_404(Category, pk=pk)
         questions = Question.objects.filter(category=pk)
+        question_options = {}
         for question in questions:
             options = Option.objects.filter(question=question)
-        return render(request, 'quiz.html', {'category':category, 'questions': questions, 'options': options})
+            question_options[question] = options  # Store options for this question
+
+        return render(request, 'quiz.html', {'category': category, 'questions':questions, 'question_options': question_options})
     
 
 

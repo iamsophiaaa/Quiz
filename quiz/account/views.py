@@ -15,7 +15,7 @@ def register(request):
         else:
             new_user = User.objects.create_user(uname, email, pass1)
             new_user.save()
-            return redirect('login')
+            return redirect('account:login')
 
     
     
