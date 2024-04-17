@@ -1,5 +1,6 @@
-from django.shortcuts import get_object_or_404, render
+from django.shortcuts import get_object_or_404, redirect, render
 from .models import Category, Question, Option
+from django.http import HttpResponse
 
 def index(request):
     if request.method == 'GET':
@@ -30,5 +31,10 @@ def quiz(request, pk):
 
         return render(request, 'quiz.html', {'category': category, 'questions':questions, 'question_options': question_options})
     
+    if request.method == 'POST':
+        
+        return redirect('catalogue:score')
+    
 
-
+def score(request):
+    return render(request, 'score.html')
