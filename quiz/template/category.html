@@ -1,24 +1,21 @@
 {% extends 'base1.html'%}
 {% block content%}
 
-<h1 class="display-4 text-center my-5">All Quizzes</h1>
-
-
-
-
+<h1 class="display-4 text-center my-5">Category</h1>
 
 <div class="container">
 
     <div class="row row-cols-1 row-cols-sm-1 row-cols-md-2 row-cols-lg-3 g-3">
-        {%for i in quiz%}
+        {%for i in category%}
         <div class="col">
             <div class="card shadow-sm">
                 <div class="card-body">
-                    <h4>{{i.quiz_name}}</h4>
+                    <h4>{{i.category}}</h4>
+                    <p class="card-text">Total Questions - 10</p>
                     
                     <div class="d-flex justify-content-between align-items-center">
                         <div class="btn-group">
-                            <a href="{% url 'catalogue:category' i.id%}" type="button" class="btn btn-sm btn-outline-success">Start
+                            <a href="{% url 'catalogue:quiz' i.id%}" type="button" class="btn btn-sm btn-outline-success">Start
                                 Quiz</a>
                         </div>
                         

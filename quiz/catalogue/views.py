@@ -1,5 +1,5 @@
 from django.shortcuts import get_object_or_404, redirect, render
-from .models import Category, Question, Option
+from .models import Category, Question, Option, Quiz
 from django.http import HttpResponse
 
 def index(request):
@@ -14,11 +14,16 @@ def index(request):
     
 def dashboard(request):
     if request.method == 'GET':
-        categories = Category.objects.all()
+        quiz = Quiz.objects.all()
         
         
-        return render(request, 'dashboard.html', {'categories': categories})
+        return render(request, 'dashboard.html', {'quiz': quiz})
 
+def category(request, pk):
+    if request.method == 'GET':
+        category = Category.objects.filter(quiz=pk)
+        
+        return render(request, 'category.html', {'category': category})
 
 def quiz(request, pk):
     if request.method == 'GET':

@@ -1,7 +1,7 @@
 from django.contrib import admin
 # Register your models here.
-from .models import Category, Question, Option
+from .models import Category, Question, Option, Quiz
 
 
 
-admin.site.register([Category, Question , Option])
+admin.site.register([Category, Question , Option, Quiz])
