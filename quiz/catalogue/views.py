@@ -32,7 +32,7 @@ def quiz(request, pk):
         question_options = {}
         for question in questions:
             options = Option.objects.filter(question=question)
-            question_options[question] = options  # Store options for this question
+            question_options[question] = options 
 
         return render(request, 'quiz.html', {'category': category, 'questions':questions, 'question_options': question_options})
     
