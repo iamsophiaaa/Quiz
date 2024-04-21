@@ -21,9 +21,10 @@ def dashboard(request):
 
 def category(request, pk):
     if request.method == 'GET':
+        quiz = get_object_or_404(Quiz, pk=pk)
         category = Category.objects.filter(quiz=pk)
         
-        return render(request, 'category.html', {'category': category})
+        return render(request, 'category.html', {'category': category, 'quiz': quiz})
 
 def question(request, pk):
     if request.method == 'GET':
