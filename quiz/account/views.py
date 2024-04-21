@@ -4,7 +4,7 @@ from django.contrib.auth import authenticate,logout, login
 # Create your views here.
 def register(request):
     if request.method =='GET':
-        return render(request, "register.html" )
+        return render(request, "account/register.html" )
     if request.method == 'POST':
         uname= request.POST.get('username')
         email= request.POST.get('email')
@@ -23,7 +23,7 @@ def register(request):
 def login_user(request):
     if request.method=='GET':
         
-        return render(request ,"login.html" )
+        return render(request ,"account/login.html" )
     if request.method == 'POST':
         error = ''
         uname = request.POST.get('username')
@@ -36,7 +36,7 @@ def login_user(request):
         else:
             error='Credentials do not match'
             print(error)
-            return render(request ,"login.html", {'error':error} )
+            return render(request ,"account/login.html", {'error':error} )
     
 def logout_user(request):
     logout(request)
