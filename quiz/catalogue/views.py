@@ -25,7 +25,7 @@ def category(request, pk):
         
         return render(request, 'category.html', {'category': category})
 
-def quiz(request, pk):
+def question(request, pk):
     if request.method == 'GET':
         category = get_object_or_404(Category, pk=pk)
         questions = Question.objects.filter(category=pk)
@@ -34,7 +34,7 @@ def quiz(request, pk):
             options = Option.objects.filter(question=question)
             question_options[question] = options 
 
-        return render(request, 'quiz.html', {'category': category, 'questions':questions, 'question_options': question_options})
+        return render(request, 'question.html', {'category': category, 'questions':questions, 'question_options': question_options})
     
     if request.method == 'POST':
         
